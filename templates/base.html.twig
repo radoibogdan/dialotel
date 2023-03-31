@@ -20,6 +20,27 @@
 
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light" style="height: 100px;">
+            <a class="navbar-brand" href="{{ path('annonces') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Dialotel</p>
+            </a>
+            <a class="navbar-brand" href="{{ path('annonces') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Annonces</p>
+            </a>
+            <a class="navbar-brand" href="{{ path('liste_annonce') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes annonces</p>
+            </a>
+            <a class="navbar-brand" href="{{ path('liste_annonce_candidatures') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes annonces auquels j'ai postulé</p>
+            </a>
+            <a class="navbar-brand" href="{{ path('app_carte_paiement_index') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes cartes de paiement</p>
+            </a>
+            <a class="navbar-brand" href="{{ path('annonces') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">S'enregistrer</p>
+            </a>
+        </nav>
+
         {% block body %}{% endblock %}
     </body>
 
@@ -30,5 +51,6 @@
                 integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
                 crossorigin="anonymous">
         </script>
+        <script src="{{ asset('js/app.js') }}"></script>
     {% endblock %}
 </html>

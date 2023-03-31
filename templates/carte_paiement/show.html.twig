@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte Paiement{% endblock %}
+
+{% block body %}
+    <h1>Carte Paiement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_paiement.id }}</td>
+            </tr>
+            <tr>
+                <th>Numéro</th>
+                <td>{{ carte_paiement.numero }}</td>
+            </tr>
+            <tr>
+                <th>Mois Expiration</th>
+                <td>{{ carte_paiement.moisExpiration }}</td>
+            </tr>
+            <tr>
+                <th>Année</th>
+                <td>{{ carte_paiement.annee }}</td>
+            </tr>
+            <tr>
+                <th>Nom porteur de carte</th>
+                <td>{{ carte_paiement.nomPorteur }}</td>
+            </tr>
+            <tr>
+                <th>Code Secret</th>
+                <td>***</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_carte_paiement_index') }}">Retour à la liste</a>
+
+    <a href="{{ path('app_carte_paiement_edit', {'id': carte_paiement.id}) }}">Modifier</a>
+
+    {{ include('carte_paiement/_delete_form.html.twig') }}
+{% endblock %}

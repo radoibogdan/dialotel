@@ -24,7 +24,5 @@
 
     <a href="{{ path('app_annonce_crud_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_annonce_crud_edit', {'id': annonce.id}) }}">Modifier</a>
-
-    {{ include('annonce_crud/_delete_form.html.twig') }}
+    <a class="btn btn-primary js-annonce" data-id-annonce={{ annonce.id }} data-id-user={{ userConnecteId }} href="#" role="button">Offrir mes services</a>
 {% endblock %}

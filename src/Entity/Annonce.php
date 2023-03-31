@@ -54,6 +54,9 @@ class Annonce
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateAnnonce = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $titre = null;
+
     /**
      * Constructeur
      */
@@ -150,6 +153,18 @@ class Annonce
     public function setDateAnnonce(\DateTimeInterface $dateAnnonce): self
     {
         $this->dateAnnonce = $dateAnnonce;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
 
         return $this;
     }

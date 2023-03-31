@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier CartePaiement{% endblock %}
+
+{% block body %}
+    <h1>Modifier CartePaiement</h1>
+
+    {{ include('carte_paiement/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_carte_paiement_index') }}">Retour à la liste</a>
+
+    {{ include('carte_paiement/_delete_form.html.twig') }}
+{% endblock %}

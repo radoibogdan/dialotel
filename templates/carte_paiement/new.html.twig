@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CartePaiement{% endblock %}
+
+{% block body %}
+    <h1>Create new CartePaiement</h1>
+
+    {{ include('carte_paiement/_form.html.twig') }}
+
+    <a href="{{ path('app_carte_paiement_index') }}">Retour à la liste</a>
+{% endblock %}

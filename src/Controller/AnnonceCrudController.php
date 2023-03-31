@@ -39,13 +39,13 @@ class AnnonceCrudController extends AbstractController
      * @param AnnonceRepository $annonceRepository
      * @return Response
      */
-    #[Route('/creer', name: 'app_annonce_crud_creer', methods: ['GET', 'POST'])]
+    #[Route('/creer', name: 'app_annonce_crud_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AnnonceRepository $annonceRepository): Response
     {
         $user = $this->getUser();
         if (empty($user)) {
             $this->addFlash('danger', 'Il faut être connecté pour créer une annonce');
-            return $this->redirectToRoute('app_annonce_crud_creer');
+            return $this->redirectToRoute('app_annonce_crud_index');
         }
 
         $annonce = new Annonce();

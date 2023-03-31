@@ -2,25 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Annonce;
+use App\Entity\CartePaiement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AnnonceType extends AbstractType
+class CartePaiementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre')
-            ->add('description')
+            ->add('numero')
+            ->add('moisExpiration')
+            ->add('annee')
+            ->add('nomPorteur')
+            ->add('cvv')
+//            ->add('user')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Annonce::class,
+            'data_class' => CartePaiement::class,
         ]);
     }
 }

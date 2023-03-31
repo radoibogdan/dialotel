@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CartePaiementRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CartePaiementRepository::class)]
@@ -31,6 +32,9 @@ class CartePaiement
 
     #[ORM\Column]
     private ?int $cvv = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateCreation = null;
 
     public function getId(): ?int
     {
@@ -105,6 +109,18 @@ class CartePaiement
     public function setCvv(int $cvv): self
     {
         $this->cvv = $cvv;
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
 
         return $this;
     }

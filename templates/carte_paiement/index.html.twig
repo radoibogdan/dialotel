@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de vous cartes de paiement{% endblock %}
+
+{% block body %}
+    <h1>Liste de vous cartes de paiement</h1>
+
+    <a class="btn btn-info" href="{{ path('liste_annonce') }}">
+        Retour à la liste des annonces
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numéro carte</th>
+                <th>Mois Expiration</th>
+                <th>Année</th>
+                <th>Nom Porteur</th>
+                <th>Code secret</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_paiement in carte_paiements %}
+            <tr>
+                <td>{{ carte_paiement.numero }}</td>
+                <td>{{ carte_paiement.moisExpiration }}</td>
+                <td>{{ carte_paiement.annee }}</td>
+                <td>{{ carte_paiement.nomPorteur }}</td>
+                <td>***</td>
+                <td>
+                    <a href="{{ path('app_carte_paiement_show', {'id': carte_paiement.id}) }}">Afficher</a>
+                    <a href="{{ path('app_carte_paiement_edit', {'id': carte_paiement.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Pas de cartes enregistrées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_carte_paiement_new') }}">Enregistrer une nouvelle carte</a>
+{% endblock %}
