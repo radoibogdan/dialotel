@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/annonces')]
+#[Route('/user/annonces')]
 class AnnonceCrudController extends AbstractController
 {
     /**
@@ -39,7 +39,7 @@ class AnnonceCrudController extends AbstractController
      * @param AnnonceRepository $annonceRepository
      * @return Response
      */
-    #[Route('/creer', name: 'app_annonce_crud_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_annonce_crud_new', methods: ['GET', 'POST'])]
     public function new(Request $request, AnnonceRepository $annonceRepository): Response
     {
         $user = $this->getUser();

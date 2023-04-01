@@ -11,6 +11,6 @@ class MainController extends AbstractController
     #[Route('/', name: 'accueil')]
     public function index(): Response
     {
-        return $this->redirectToRoute('liste_annonce');
+        return $this->redirectToRoute('annonces_list');
     }
 }

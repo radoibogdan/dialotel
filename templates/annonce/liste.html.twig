@@ -13,36 +13,19 @@
             Créer une annonce
         </a>
 
-        <a class="btn btn-info" href="{{ path('app_carte_paiement_new') }}">
-            Enregistrer une carte de paiement sur mon compte
-        </a>
+        <div class="d-flex p-2">
+        {% for annonce in liste_annonces %}
+            <div class="card m-5" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('images/magic-photo.png') }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ annonce.titre }}</h5>
+                    <p class="card-text">{{ annonce.description }}</p>
+                    <p>Date Création : {{ annonce.dateAnnonce is empty ? "" : annonce.dateAnnonce | date("d/m/Y") }}</p>
+                    <a href="{{ path('annonce_detail', {id:annonce.id}) }}" class="btn btn-primary">Offrir mes services</a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
 
-        <table class="table is-fullwidth is-hoverable liste-produits-admin">
-            <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Description</th>
-                <th class="has-text-centered">Auteur</th>
-                <th class="has-text-centered">Date Annonce</th>
-                <th class="has-text-centered">Modifier</th>
-            </tr>
-            </thead>
-            <tbody>
-            {# La boucle sur liste_annonces #}
-            {% for annonce in liste_annonces %}
-                <tr>
-                    <td class="pr-1 has-text-centered">{{ annonce.titre }}</td>
-                    <td class="pr-1">{{ annonce.description }}</td>
-                    <td>{{ annonce.description }} </td>
-                    <td class="has-text-centered">{{ annonce.dateAnnonce is empty ? "" : annonce.dateAnnonce | date("d/m/Y") }}</td>
-                    <td>
-                        <a href="{{ path('app_annonce_crud_edit', {id:annonce.id}) }}">
-                            Modifier
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
     </div>
 {% endblock %}

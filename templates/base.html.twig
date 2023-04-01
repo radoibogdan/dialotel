@@ -21,24 +21,40 @@
     </head>
     <body>
         <nav class="navbar navbar-light bg-light" style="height: 100px;">
-            <a class="navbar-brand" href="{{ path('annonces') }}">
-                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Dialotel</p>
+            <a class="navbar-brand" href="{{ path('annonces_list') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #d20c0c;">Logo Dialotel</p>
             </a>
-            <a class="navbar-brand" href="{{ path('annonces') }}">
+            <a class="navbar-brand" href="{{ path('annonces_list') }}">
                 <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Annonces</p>
             </a>
-            <a class="navbar-brand" href="{{ path('liste_annonce') }}">
+            {% if app.user %}
+            <a class="navbar-brand" href="{{ path('liste_user_annonces') }}">
                 <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes annonces</p>
             </a>
-            <a class="navbar-brand" href="{{ path('liste_annonce_candidatures') }}">
-                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes annonces auquels j'ai postulé</p>
+            <a class="navbar-brand" href="{{ path('liste_user_candidatures_deposees') }}">
+                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes annonces auxquelles j'ai postulé</p>
             </a>
             <a class="navbar-brand" href="{{ path('app_carte_paiement_index') }}">
                 <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Mes cartes de paiement</p>
             </a>
-            <a class="navbar-brand" href="{{ path('annonces') }}">
-                <p class="pl-2 d-inline font-weight-bold" style="color: #444;">S'enregistrer</p>
-            </a>
+            {% endif %}
+            {% if app.user %}
+                <a class="navbar-brand" href="{{ path('app_logout') }}">
+                    <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Se déconnecter</p>
+                </a>
+            {% else %}
+                <a class="navbar-brand" href="{{ path('app_register') }}">
+                    <p class="pl-2 d-inline font-weight-bold" style="color: #444;">S'enregistrer</p>
+                </a>
+                <a class="navbar-brand" href="{{ path('app_login') }}">
+                    <p class="pl-2 d-inline font-weight-bold" style="color: #444;">Se connecter</p>
+                </a>
+            {% endif %}
+
+
+
+
+
         </nav>
 
         {% block body %}{% endblock %}

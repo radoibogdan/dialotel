@@ -36,11 +36,10 @@ class CartePaiementController extends AbstractController
         $user = $this->getUser();
         if (empty($user)) {
             $this->addFlash('danger', 'Il faut être connecté pour pouvoir voir les cartes associées au compte');
-            return $this->redirectToRoute('app_annonce_crud_index');
+            return $this->redirectToRoute('annonces_list');
         }
 
         return $this->render('carte_paiement/index.html.twig', [
-//            'carte_paiements' => $cartePaiementRepository->findAll(),
             'carte_paiements' => $user->getCartePaiements()
         ]);
     }

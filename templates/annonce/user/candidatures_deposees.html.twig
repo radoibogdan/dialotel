@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste annonces {% endblock %}
+
+{% block body %}
+    <div class="section">
+
+        <h1 class="title">Liste des Annonces</h1>
+
+        {% include 'includes/flashes.html.twig' %}
+
+        <a class="btn btn-info" href="{{ path('app_annonce_crud_new') }}">
+            Créer une annonce
+        </a>
+
+        <a class="btn btn-info" href="{{ path('app_carte_paiement_new') }}">
+            Enregistrer une carte de paiement sur mon compte
+        </a>
+
+        <table class="table is-fullwidth is-hoverable liste-produits-admin">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th class="has-text-centered">Auteur</th>
+                <th class="has-text-centered">Date Annonce</th>
+                <th class="has-text-centered">Modifier</th>
+            </tr>
+            </thead>
+            <tbody>
+            {# La boucle sur liste_annonces #}
+            {% for annonce in liste_annonces %}
+                <tr>
+                    <td class="pr-1 has-text-centered">{{ annonce.titre }}</td>
+                    <td class="pr-1">{{ annonce.description }}</td>
+                    <td>{{ annonce.description }} </td>
+                    <td class="has-text-centered">{{ annonce.dateAnnonce is empty ? "" : annonce.dateAnnonce | date("d/m/Y") }}</td>
+                    <td>
+                        <a href="{{ path('app_annonce_crud_edit', {id:annonce.id}) }}">
+                            Modifier
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
